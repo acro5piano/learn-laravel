@@ -1,4 +1,5 @@
 const elixir = require('laravel-elixir');
+var browserSync = require('browser-sync').create();
 
 require('laravel-elixir-vue-2');
 
@@ -14,6 +15,10 @@ require('laravel-elixir-vue-2');
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+  mix.sass('app.scss')
+    .webpack('app.js');
+  mix.browserSync({
+    proxy: 'http://localhost:8000',
+    open: false,
+  });
 });
